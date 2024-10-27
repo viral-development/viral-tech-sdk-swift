@@ -3,7 +3,7 @@ import Foundation
 let DEFAULT_API_URL = "https://viral.tech/api/v1"
 
 // Define our Result type
-enum ApiError: Error {
+public enum ApiError: Error {
     case networkError(Error)
     case invalidUrl
     case invalidResponse
@@ -12,13 +12,13 @@ enum ApiError: Error {
 
 typealias ApiResult<T> = Result<T, ApiError>
 
-struct ViralTechOptions {
+public struct ViralTechOptions {
     let apiKey: String
     let apiUrl: String?
 }
 
 @available(iOS 13.0.0, *)
-class ViralTech {
+public class ViralTech {
     private let apiKey: String
     private let apiUrl: String
     
