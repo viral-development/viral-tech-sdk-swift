@@ -15,13 +15,18 @@ typealias ApiResult<T> = Result<T, ViralTechApiError>
 public struct ViralTechOptions {
     let apiKey: String
     let apiUrl: String?
+
+    public init(apiKey: String, apiUrl: String?) {
+        self.apiKey = apiKey
+        self.apiUrl = apiUrl
+    }
 }
 
 public class ViralTech {
     private let apiKey: String
     private let apiUrl: String
     
-    init(options: ViralTechOptions) {
+    public init(options: ViralTechOptions) {
         self.apiKey = options.apiKey
         self.apiUrl = options.apiUrl ?? DEFAULT_API_URL
     }
