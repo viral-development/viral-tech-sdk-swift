@@ -10,7 +10,7 @@ public enum ViralTechApiError: Error {
     case serverError(Int)
 }
 
-typealias ApiResult<T> = Result<T, ViralTechApiError>
+public typealias ViralTechApiResult<T> = Result<T, ViralTechApiError>
 
 public struct ViralTechOptions {
     let apiKey: String
@@ -31,7 +31,7 @@ public class ViralTech {
         self.apiUrl = options.apiUrl ?? DEFAULT_API_URL
     }
     
-    func logDownload() async -> ApiResult<Void> {
+    public func logDownload() async -> ViralTechApiResult<Void> {
         return await makeApiRequest(
             url: "\(apiUrl)/log-download",
             method: "POST",
@@ -39,7 +39,7 @@ public class ViralTech {
         )
     }
     
-    func logConversion() async -> ApiResult<Void> {
+    public func logConversion() async -> ViralTechApiResult<Void> {
         return await makeApiRequest(
             url: "\(apiUrl)/log-conversion",
             method: "POST",
@@ -49,7 +49,7 @@ public class ViralTech {
 }
 
 // Helper function to make API requests
-func makeApiRequest(url urlString: String, method: String, headers: [String: String]) async -> ApiResult<Void> {
+func makeApiRequest(url urlString: String, method: String, headers: [String: String]) async -> ViralTechApiResult<Void> {
     guard let url = URL(string: urlString) else {
         return .failure(.invalidUrl)
     }
