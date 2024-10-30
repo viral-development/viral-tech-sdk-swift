@@ -3,21 +3,20 @@ import Foundation
 let DEFAULT_API_URL = "https://viral.tech/api/v1"
 
 // Define our Result type
-public enum ApiError: Error {
+public enum ViralTechApiError: Error {
     case networkError(Error)
     case invalidUrl
     case invalidResponse
     case serverError(Int)
 }
 
-typealias ApiResult<T> = Result<T, ApiError>
+typealias ApiResult<T> = Result<T, ViralTechApiError>
 
 public struct ViralTechOptions {
     let apiKey: String
     let apiUrl: String?
 }
 
-@available(iOS 13.0.0, *)
 public class ViralTech {
     private let apiKey: String
     private let apiUrl: String
@@ -45,7 +44,6 @@ public class ViralTech {
 }
 
 // Helper function to make API requests
-@available(iOS 13.0.0, *)
 func makeApiRequest(url urlString: String, method: String, headers: [String: String]) async -> ApiResult<Void> {
     guard let url = URL(string: urlString) else {
         return .failure(.invalidUrl)
