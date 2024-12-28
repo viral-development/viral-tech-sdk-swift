@@ -1,6 +1,6 @@
 import Foundation
 
-let DEFAULT_API_URL = "https://viral.tech/api/v1"
+let DEFAULT_API_URL = "https://app.viral.tech/api/v1"
 
 // Define our Result type
 public enum ViralTechApiError: Error {
